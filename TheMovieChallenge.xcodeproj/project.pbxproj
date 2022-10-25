@@ -33,13 +33,6 @@
 			remoteGlobalIDString = AA32C841290735A000975F4D;
 			remoteInfo = TheMovieChallenge;
 		};
-		AA32C863290735A300975F4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA32C83A290735A000975F4D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA32C841290735A000975F4D;
-			remoteInfo = TheMovieChallenge;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +46,6 @@
 		AA32C853290735A200975F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA32C858290735A300975F4D /* TheMovieChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA32C85C290735A300975F4D /* LoadMoviesFromRemoteUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoviesFromRemoteUseCases.swift; sourceTree = "<group>"; };
-		AA32C862290735A300975F4D /* TheMovieChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8BF3C829083444008F0E5B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AA8BF3CA290835B6008F0E5B /* MovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLoader.swift; sourceTree = "<group>"; };
 		AA8BF3CD29083677008F0E5B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -80,13 +72,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA32C85F290735A300975F4D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,7 +89,6 @@
 			children = (
 				AA32C842290735A000975F4D /* TheMovieChallenge.app */,
 				AA32C858290735A300975F4D /* TheMovieChallengeTests.xctest */,
-				AA32C862290735A300975F4D /* TheMovieChallengeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,24 +186,6 @@
 			productReference = AA32C858290735A300975F4D /* TheMovieChallengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AA32C861290735A300975F4D /* TheMovieChallengeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA32C872290735A300975F4D /* Build configuration list for PBXNativeTarget "TheMovieChallengeUITests" */;
-			buildPhases = (
-				AA32C85E290735A300975F4D /* Sources */,
-				AA32C85F290735A300975F4D /* Frameworks */,
-				AA32C860290735A300975F4D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AA32C864290735A300975F4D /* PBXTargetDependency */,
-			);
-			name = TheMovieChallengeUITests;
-			productName = TheMovieChallengeUITests;
-			productReference = AA32C862290735A300975F4D /* TheMovieChallengeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -234,10 +200,6 @@
 						CreatedOnToolsVersion = 13.4;
 					};
 					AA32C857290735A300975F4D = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = AA32C841290735A000975F4D;
-					};
-					AA32C861290735A300975F4D = {
 						CreatedOnToolsVersion = 13.4;
 						TestTargetID = AA32C841290735A000975F4D;
 					};
@@ -258,7 +220,6 @@
 			targets = (
 				AA32C841290735A000975F4D /* TheMovieChallenge */,
 				AA32C857290735A300975F4D /* TheMovieChallengeTests */,
-				AA32C861290735A300975F4D /* TheMovieChallengeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,13 +236,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA32C856290735A300975F4D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA32C860290735A300975F4D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,13 +272,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA32C85E290735A300975F4D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -332,11 +279,6 @@
 			isa = PBXTargetDependency;
 			target = AA32C841290735A000975F4D /* TheMovieChallenge */;
 			targetProxy = AA32C859290735A300975F4D /* PBXContainerItemProxy */;
-		};
-		AA32C864290735A300975F4D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA32C841290735A000975F4D /* TheMovieChallenge */;
-			targetProxy = AA32C863290735A300975F4D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -566,40 +508,6 @@
 			};
 			name = Release;
 		};
-		AA32C873290735A300975F4D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.IELA.TheMovieChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TheMovieChallenge;
-			};
-			name = Debug;
-		};
-		AA32C874290735A300975F4D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.IELA.TheMovieChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TheMovieChallenge;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -626,15 +534,6 @@
 			buildConfigurations = (
 				AA32C870290735A300975F4D /* Debug */,
 				AA32C871290735A300975F4D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AA32C872290735A300975F4D /* Build configuration list for PBXNativeTarget "TheMovieChallengeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA32C873290735A300975F4D /* Debug */,
-				AA32C874290735A300975F4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
