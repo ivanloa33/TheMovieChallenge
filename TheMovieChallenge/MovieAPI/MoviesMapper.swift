@@ -8,8 +8,12 @@
 import Foundation
 
 internal final class MoviesMapper {
-    private struct Root: Decodable {
+    private struct Results: Decodable {
         let movies: [RemoteMovie]
+        
+        enum CodingKeys: String, CodingKey {
+            case movies = "results"
+        }
     }
     
     private static var OK_200: Int { 200 }
@@ -17,10 +21,10 @@ internal final class MoviesMapper {
     internal static func map(_ data: Data, from response: HTTPURLResponse) throws -> [RemoteMovie] {
         
         guard response.statusCode == OK_200,
-              let root = try? JSONDecoder().decode(Root.self, from: data) else {
+              let results = try? JSONDecoder().decode(Results.self, from: data) else {
             throw RemoteMovieLoader.Error.invalidData
         }
         
-        return root.movies
+        return results.movies
     }
 }

@@ -21,6 +21,8 @@
 		AA8BF3D2290836DF008F0E5B /* RemoteMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BF3D1290836DF008F0E5B /* RemoteMovieLoader.swift */; };
 		AA8BF3D42908384A008F0E5B /* MoviesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BF3D32908384A008F0E5B /* MoviesMapper.swift */; };
 		AA8BF3D62908396D008F0E5B /* RemoteMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BF3D52908396D008F0E5B /* RemoteMovie.swift */; };
+		AA9665D0290846CF00C66D16 /* EndPointConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9665CF290846CF00C66D16 /* EndPointConstants.swift */; };
+		AA9665D22908490700C66D16 /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9665D12908490700C66D16 /* EndPointProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		AA8BF3D1290836DF008F0E5B /* RemoteMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieLoader.swift; sourceTree = "<group>"; };
 		AA8BF3D32908384A008F0E5B /* MoviesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesMapper.swift; sourceTree = "<group>"; };
 		AA8BF3D52908396D008F0E5B /* RemoteMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovie.swift; sourceTree = "<group>"; };
+		AA9665CF290846CF00C66D16 /* EndPointConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointConstants.swift; sourceTree = "<group>"; };
+		AA9665D12908490700C66D16 /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,11 +153,13 @@
 		AA8BF3CC29083652008F0E5B /* MovieAPI */ = {
 			isa = PBXGroup;
 			children = (
+				AA9665CF290846CF00C66D16 /* EndPointConstants.swift */,
 				AA8BF3CD29083677008F0E5B /* HTTPClient.swift */,
 				AA8BF3CF290836B2008F0E5B /* URLSessionHTTPClient.swift */,
 				AA8BF3D1290836DF008F0E5B /* RemoteMovieLoader.swift */,
 				AA8BF3D32908384A008F0E5B /* MoviesMapper.swift */,
 				AA8BF3D52908396D008F0E5B /* RemoteMovie.swift */,
+				AA9665D12908490700C66D16 /* EndPointProtocol.swift */,
 			);
 			path = MovieAPI;
 			sourceTree = "<group>";
@@ -292,10 +298,12 @@
 				AA8BF3D0290836B2008F0E5B /* URLSessionHTTPClient.swift in Sources */,
 				AA8BF3CB290835B6008F0E5B /* MovieLoader.swift in Sources */,
 				AA32C84A290735A000975F4D /* ViewController.swift in Sources */,
+				AA9665D0290846CF00C66D16 /* EndPointConstants.swift in Sources */,
 				AA8BF3CE29083677008F0E5B /* HTTPClient.swift in Sources */,
 				AA32C846290735A000975F4D /* AppDelegate.swift in Sources */,
 				AA8BF3D2290836DF008F0E5B /* RemoteMovieLoader.swift in Sources */,
 				AA8BF3D42908384A008F0E5B /* MoviesMapper.swift in Sources */,
+				AA9665D22908490700C66D16 /* EndPointProtocol.swift in Sources */,
 				AA8BF3C929083444008F0E5B /* Movie.swift in Sources */,
 				AA8BF3D62908396D008F0E5B /* RemoteMovie.swift in Sources */,
 				AA32C848290735A000975F4D /* SceneDelegate.swift in Sources */,

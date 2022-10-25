@@ -8,11 +8,11 @@
 import Foundation
 
 internal struct RemoteMovie: Decodable {
-    let id: String
+    let id: Int
     let backdrop_path: String
     let original_language: String
     let overview: String
     let poster_path: String
     let title: String
-    let vote_average: String
+    let vote_average: Float
 }

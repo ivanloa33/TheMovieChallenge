@@ -8,11 +8,11 @@
 import Foundation
 
 public struct Movie: Equatable {
-    let id: String
+    let id: Int
     let backdropPath: String
     let originalLanguage: String
     let overview: String
     let posterPath: String
     let title: String
-    let voteAverage: String
+    let voteAverage: Float
 }
