@@ -8,6 +8,7 @@
 import Foundation
 
 public enum EndPointConstants: EndPointProtocol {
+    case popular
     case upcoming
 
     private var apiKey: String {
@@ -23,19 +24,18 @@ public enum EndPointConstants: EndPointProtocol {
     }
 
     var path: String {
+        let path = "/3/movie"
         switch self {
+        case .popular:
+            return path.appending("/popular")
         case .upcoming:
-            return "/3/movie/upcoming"
+            return path.appending("/upcoming")
         }
     }
 
     var params: [URLQueryItem] {
-        var params: [URLQueryItem] = [.init(name: "api_key", value: apiKey)]
-        switch self {
-        case .upcoming:
-            params.append(.init(name: "language", value: "en-US"))
-            params.append(.init(name: "page", value: "1"))
-            return params
-        }
+        return [.init(name: "api_key", value: apiKey),
+                .init(name: "language", value: "en-US"),
+                .init(name: "page", value: "1")]
     }
 }

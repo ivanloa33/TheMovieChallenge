@@ -44,11 +44,30 @@ class LoadMoviesFromRemoteUseCases: XCTestCase {
         }
     }
     
-    // End to end test
+    // MARK: - End to end tests
     func disbale_test_loadUpcoming() {
         let exp = expectation(description: "Wait for url response")
         let client = URLSessionHTTPClient()
         guard let upcomingURL = EndPointConstants.upcoming.url else {
+            return
+        }
+        let sut = RemoteMovieLoader(url: upcomingURL, client: client)
+        sut.load { result in
+            switch result {
+            case let .success(movies):
+                print(movies)
+            case let .failure(error):
+                print(error)
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5.0)
+    }
+    
+    func disable_test_loadPopular() {
+        let exp = expectation(description: "Wait for url response")
+        let client = URLSessionHTTPClient()
+        guard let upcomingURL = EndPointConstants.popular.url else {
             return
         }
         let sut = RemoteMovieLoader(url: upcomingURL, client: client)
