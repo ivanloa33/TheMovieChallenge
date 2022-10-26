@@ -8,7 +8,6 @@
 import Foundation
 
 protocol LoaderPresenterProtocol {
-    
 }
 
 final class LoaderPresenter: LoaderPresenterProtocol {

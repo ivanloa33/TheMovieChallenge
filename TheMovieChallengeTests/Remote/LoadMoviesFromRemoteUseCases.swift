@@ -44,6 +44,19 @@ class LoadMoviesFromRemoteUseCases: XCTestCase {
         }
     }
     
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let url = anyURL()
+        let client = HttpClientSpy()
+        var sut: RemoteMovieLoader? = RemoteMovieLoader(url: url, client: client)
+        
+        var capturedResults = [RemoteMovieLoader.Result]()
+        sut?.load { capturedResults.append($0) }
+        
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeItemJSON(movies: []))
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+    
     // MARK: - End to end tests
     func disbale_test_loadUpcoming() {
         let exp = expectation(description: "Wait for url response")
@@ -83,10 +96,16 @@ class LoadMoviesFromRemoteUseCases: XCTestCase {
         wait(for: [exp], timeout: 5.0)
     }
     
+    // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteMovieLoader, client: HttpClientSpy) {
         let client = HttpClientSpy()
         let sut = RemoteMovieLoader(url: url, client: client)
         return (sut, client)
+    }
+    
+    private func makeItemJSON(movies: [Movie]) -> Data {
+        let json = ["results": movies]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
     
     private func expect(_ sut: RemoteMovieLoader, toCompleteWith expectedResult: RemoteMovieLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
@@ -111,25 +130,5 @@ class LoadMoviesFromRemoteUseCases: XCTestCase {
     
     private func failure(_ error: RemoteMovieLoader.Error) -> RemoteMovieLoader.Result {
         .failure(error)
-    }
-    
-    private func anyURL() -> URL {
-        URL(string: "https://anyURL.com")!
-    }
-}
-
-private class HttpClientSpy: HttpClient {
-    private var messages = [(url: URL, completion: (HttpClientResult) -> Void)]()
-    
-    var requestedUrls: [URL] {
-        return messages.map { $0.url }
-    }
-    
-    func get(from url: URL, completion: @escaping (HttpClientResult) -> Void) {
-        messages.append((url, completion))
-    }
-
-    func complete(with error: Error, at index: Int = 0) {
-        messages[index].completion(.failure(error))
     }
 }

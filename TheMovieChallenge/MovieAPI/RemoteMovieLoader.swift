@@ -38,22 +38,9 @@ final class RemoteMovieLoader: MovieLoader {
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
             let items = try MoviesMapper.map(data, from: response)
-            return .success(items.toModels())
+            return .success(items)
         } catch {
             return .failure(error)
-        }
-    }
-}
-
-private extension Array where Element == RemoteMovie {
-    func toModels() -> [Movie] {
-        return map { Movie(id: $0.id,
-                           backdropPath: $0.backdrop_path,
-                           originalLanguage: $0.original_language,
-                           overview: $0.overview,
-                           posterPath: $0.poster_path,
-                           title: $0.title,
-                           voteAverage: $0.vote_average)
         }
     }
 }
