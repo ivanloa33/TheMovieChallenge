@@ -26,11 +26,11 @@ class UpcomingMoviesRepository: Repository, MovieLoader {
     
     func load(completion: @escaping (LoadMovieResult) -> Void) {
         
-        localLoader?.load { result in
+        localLoader?.load {[weak self] result in
             switch result {
             case let .success(movies):
                 if movies.isEmpty {
-                    self.fetchMovies(completion: completion)
+                    self?.fetchMovies(completion: completion)
                 } else {
                     completion(.success(movies))
                 }
