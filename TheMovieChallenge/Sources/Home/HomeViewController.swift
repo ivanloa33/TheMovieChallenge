@@ -52,11 +52,11 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.reuseIdentifier, for: indexPath) as? MovieCollectionViewCell,
-              let titleMovie = presenter?.getTitleFromMovie(tag: collectionView.tag, indexPath: indexPath) else {
+              let cellViewModel = presenter?.getCellViewModelFromMovie(tag: collectionView.tag, indexPath: indexPath) else {
             return UICollectionViewCell()
         }
         cell.backgroundColor = .lightGray
-        cell.configure(with: titleMovie)
+        cell.configure(with: cellViewModel)
         return cell
     }
 }

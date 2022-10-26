@@ -15,9 +15,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
     static let nibName = String(describing: MovieCollectionViewCell.self)
     static let reuseIdentifier = "movieCell"
     
-    func configure(with title: String) {
-//        let path = "https://api.themoviedb.org/3/movie/\(movie.id)}/images?api_key=89f0613956f4eb4120fa66670d8617a2&language=en-US"
-//        self.poster.loadImage(from: path)
-        self.title.text = title
+    func configure(with viewModel: MovieCellViewModel) {
+        let path = "https://image.tmdb.org/t/p/w500\(viewModel.poster)"
+        self.poster.loadImage(from: path)
+        self.title.text = viewModel.title
     }
+}
+
+struct MovieCellViewModel {
+    let title: String
+    let poster: String
 }

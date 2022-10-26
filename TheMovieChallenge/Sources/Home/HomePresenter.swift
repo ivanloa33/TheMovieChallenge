@@ -9,7 +9,7 @@ import Foundation
 
 protocol HomePresenterProtocol {
     func getNumberOfItems(tag: Int) -> Int
-    func getTitleFromMovie(tag: Int, indexPath: IndexPath) -> String?
+    func getCellViewModelFromMovie(tag: Int, indexPath: IndexPath) -> MovieCellViewModel?
     func getViewModel() -> HomeViewModel
 }
 
@@ -27,8 +27,10 @@ final class HomePresenter {
                                   titleSectionOne: "Próximos estrenos",
                                   titleSectionTwo: "Tendencia",
                                   titleSectionThree: "",
-                                  upcomigTitles: upcomingMovies.map { $0.title},
-                                  popularTitles: popularMovies.map { $0.title})
+                                  upcomigMoviesViewModel: upcomingMovies.map { MovieCellViewModel(title: $0.title,
+                                                                                                  poster: $0.posterPath)},
+                                  popularMoviesViewModel: popularMovies.map { MovieCellViewModel(title: $0.title,
+                                                                                                 poster: $0.posterPath)})
     }
 }
 
@@ -37,11 +39,11 @@ extension HomePresenter: HomePresenterProtocol {
         viewModel
     }
     
-    func getTitleFromMovie(tag: Int, indexPath: IndexPath) -> String? {
+    func getCellViewModelFromMovie(tag: Int, indexPath: IndexPath) -> MovieCellViewModel? {
         if tag == 0 {
-            return viewModel.upcomigTitles[indexPath.row]
+            return viewModel.upcomigMoviesViewModel[indexPath.row]
         } else if tag == 1 {
-            return viewModel.popularTitles[indexPath.row]
+            return viewModel.popularMoviesViewModel[indexPath.row]
         } else {
             return nil
         }

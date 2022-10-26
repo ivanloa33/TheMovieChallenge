@@ -12,6 +12,6 @@ struct HomeViewModel {
     let titleSectionOne: String
     let titleSectionTwo: String
     let titleSectionThree: String
-    let upcomigTitles: [String]
-    let popularTitles: [String]
+    let upcomigMoviesViewModel: [MovieCellViewModel]
+    let popularMoviesViewModel: [MovieCellViewModel]
 }
