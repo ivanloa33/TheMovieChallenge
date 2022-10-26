@@ -42,6 +42,24 @@ class UpcomingMoviesRepository: MovieLoader {
     }
     
     private func fetchUpcomingMovies(completion: @escaping Result) {
-        remoteLoader?.load(completion: completion)
+        remoteLoader?.load(completion: { result in
+            switch result {
+            case let .success(movies):
+                self.saveInCache(movies: movies)
+                completion(.success(movies))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        })
+    }
+    
+    private func saveInCache(movies: [Movie]) {
+        localLoader?.save(movies, completion: { error in
+            if let error = error {
+                print("An error occurred saving in cache with: \(error)")
+            } else {
+                print("Movies saved successfully")
+            }
+        })
     }
 }
