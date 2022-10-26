@@ -7,8 +7,7 @@
 
 import Foundation
 
-class UpcomingMoviesRepository: MovieLoader {
-    typealias Result = (LoadMovieResult) -> Void
+class UpcomingMoviesRepository: Repository, MovieLoader {
     
     let remoteLoader: RemoteMovieLoader? = {
         guard let upcomingURL = EndPointConstants.upcoming.url else {
@@ -31,7 +30,7 @@ class UpcomingMoviesRepository: MovieLoader {
             switch result {
             case let .success(movies):
                 if movies.isEmpty {
-                    self.fetchUpcomingMovies(completion: completion)
+                    self.fetchMovies(completion: completion)
                 } else {
                     completion(.success(movies))
                 }
@@ -39,27 +38,5 @@ class UpcomingMoviesRepository: MovieLoader {
                 completion(.failure(error))
             }
         }
-    }
-    
-    private func fetchUpcomingMovies(completion: @escaping Result) {
-        remoteLoader?.load(completion: { result in
-            switch result {
-            case let .success(movies):
-                self.saveInCache(movies: movies)
-                completion(.success(movies))
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        })
-    }
-    
-    private func saveInCache(movies: [Movie]) {
-        localLoader?.save(movies, completion: { error in
-            if let error = error {
-                print("An error occurred saving in cache with: \(error)")
-            } else {
-                print("Movies saved successfully")
-            }
-        })
     }
 }

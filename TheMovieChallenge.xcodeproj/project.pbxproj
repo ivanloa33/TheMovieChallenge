@@ -35,6 +35,7 @@
 		AA9F052029097DFC00191E40 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F051F29097DFC00191E40 /* HttpClientSpy.swift */; };
 		AA9F052529099E1800191E40 /* UpcomingMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F052429099E1800191E40 /* UpcomingMovieRepository.swift */; };
 		AA9F052729099E3000191E40 /* PopularMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F052629099E3000191E40 /* PopularMoviesRepository.swift */; };
+		AAAFD4212909E1C900A5F32F /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFD4202909E1C900A5F32F /* Repository.swift */; };
 		AAF88F66290882D9009BC7F2 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF88F65290882D9009BC7F2 /* MovieCollectionViewCell.swift */; };
 		AAF88F6B2908839A009BC7F2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF88F6A2908839A009BC7F2 /* ImageLoader.swift */; };
 		AAF88F6D290883BA009BC7F2 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF88F6C290883BA009BC7F2 /* UIImageViewExtension.swift */; };
@@ -86,6 +87,7 @@
 		AA9F051F29097DFC00191E40 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
 		AA9F052429099E1800191E40 /* UpcomingMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieRepository.swift; sourceTree = "<group>"; };
 		AA9F052629099E3000191E40 /* PopularMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesRepository.swift; sourceTree = "<group>"; };
+		AAAFD4202909E1C900A5F32F /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AAF88F65290882D9009BC7F2 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAF88F6A2908839A009BC7F2 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		AAF88F6C290883BA009BC7F2 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				AA9F052429099E1800191E40 /* UpcomingMovieRepository.swift */,
 				AA9F052629099E3000191E40 /* PopularMoviesRepository.swift */,
+				AAAFD4202909E1C900A5F32F /* Repository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				AA8BF3D0290836B2008F0E5B /* URLSessionHTTPClient.swift in Sources */,
 				AA8BF3CB290835B6008F0E5B /* MovieLoader.swift in Sources */,
 				AAF88F6B2908839A009BC7F2 /* ImageLoader.swift in Sources */,
+				AAAFD4212909E1C900A5F32F /* Repository.swift in Sources */,
 				AA9F050829090D7E00191E40 /* HomeViewModel.swift in Sources */,
 				AA32C84A290735A000975F4D /* HomeViewController.swift in Sources */,
 				AA9665D0290846CF00C66D16 /* EndPointConstants.swift in Sources */,
