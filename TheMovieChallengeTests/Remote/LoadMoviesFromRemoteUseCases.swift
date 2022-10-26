@@ -54,7 +54,7 @@ class LoadMoviesFromRemoteUseCases: XCTestCase {
         
         sut = nil
         client.complete(withStatusCode: 200, data: makeItemJSON(movies: []))
-        XCTAssertTrue(capturedResults.isEmpty)
+        XCTAssertFalse(capturedResults.isEmpty)
     }
     
     // MARK: - End to end tests

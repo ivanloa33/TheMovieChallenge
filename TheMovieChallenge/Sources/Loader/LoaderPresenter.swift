@@ -37,7 +37,7 @@ final class LoaderPresenter: LoaderPresenterProtocol {
     }
     
     private func getUpcomingMovies(dispatchGroup: DispatchGroup) {
-        
+        dispatchGroup.enter()
         upcomingRepository.load { result in
             switch result {
             case let .success(upcomingMovies):
@@ -46,10 +46,12 @@ final class LoaderPresenter: LoaderPresenterProtocol {
                 print("Displar error: \(error)")
                 self.upcomingMovies = nil
             }
+            dispatchGroup.leave()
         }
     }
     
     private func getPopularMovies(dispatchGroup: DispatchGroup) {
+        dispatchGroup.enter()
         popularRepository.load { result in
             switch result {
             case let .success(popularMovies):
@@ -58,6 +60,7 @@ final class LoaderPresenter: LoaderPresenterProtocol {
                 print("Displar error: \(error)")
                 self.popularMovies = nil
             }
+            dispatchGroup.leave()
         }
     }
 }

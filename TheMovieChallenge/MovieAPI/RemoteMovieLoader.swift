@@ -16,12 +16,14 @@ struct RemoteMovieLoader: MovieLoader {
         case invalidData
     }
     
+    public typealias Result = LoadMovieResult
+    
     public init(url: URL, client: HttpClient) {
         self.url = url
         self.client = client
     }
     
-    func load(completion: @escaping (LoadMovieResult) -> Void) {
+    func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) {  result in
             switch result {
             case let .success((data, response)):
