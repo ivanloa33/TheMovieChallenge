@@ -11,69 +11,53 @@ protocol LoaderPresenterProtocol {
 }
 
 final class LoaderPresenter: LoaderPresenterProtocol {
-    var loaderView: LoaderViewProtocol?
-    var upcomingMovies: [Movie]?
-    var popularMovies: [Movie]?
+    private let loaderView: LoaderViewProtocol?
+    private let upcomingRepository: MovieLoader = UpcomingMoviesRepository()
+    private let popularRepository: MovieLoader = PopularMoviesRepository()
+    private var upcomingMovies: [Movie]?
+    private var popularMovies: [Movie]?
     
-    let upcomingLoader: RemoteMovieLoader? = {
-        guard let upcomingURL = EndPointConstants.upcoming.url else {
-            return nil
-        }
-        return RemoteMovieLoader(url: upcomingURL, client: URLSessionHTTPClient())
-    }()
-    
-    let popularLoader: RemoteMovieLoader? = {
-        guard let popularURL = EndPointConstants.popular.url else {
-            return nil
-        }
-        return RemoteMovieLoader(url: popularURL, client: URLSessionHTTPClient())
-    }()
     
     init(loaderView: LoaderViewProtocol) {
         self.loaderView = loaderView
-        fetchData()
+        fetchMovies()
     }
     
-    private func fetchData() {
+    private func fetchMovies() {
         let dispatchGroup = DispatchGroup()
-        fetchUpcomingMovies(dispatchGroup: dispatchGroup)
-        fetchPopularMovies(dispatchGroup: dispatchGroup)
-        dispatchGroup.notify(queue: .main) { [self] in
-            if let upcomingMovies = upcomingMovies,
-               let popularMovies = popularMovies {
+        getUpcomingMovies(dispatchGroup: dispatchGroup)
+        getPopularMovies(dispatchGroup: dispatchGroup)
+        dispatchGroup.notify(queue: .main) {
+            if let upcomingMovies = self.upcomingMovies,
+               let popularMovies = self.popularMovies {
                 self.loaderView?.dataLoadedSuccessfully(upcomingMovies: upcomingMovies,
-                                                        popularMovies: popularMovies)
-            } else {
-                self.loaderView?.dataLoadedWithError()
+                                                   popularMovies: popularMovies)
             }
         }
     }
     
-    private func fetchUpcomingMovies(dispatchGroup: DispatchGroup) {
-        dispatchGroup.enter()
-        upcomingLoader?.load { [weak self] result in
-            guard let self = self else { return }
+    private func getUpcomingMovies(dispatchGroup: DispatchGroup) {
+        
+        upcomingRepository.load { result in
             switch result {
-            case let .success(movies):
-                self.upcomingMovies = movies
+            case let .success(upcomingMovies):
+                self.upcomingMovies = upcomingMovies
             case let .failure(error):
-                print(error)
+                print("Displar error: \(error)")
+                self.upcomingMovies = nil
             }
-            dispatchGroup.leave()
         }
     }
     
-    private func fetchPopularMovies(dispatchGroup: DispatchGroup) {
-        dispatchGroup.enter()
-        popularLoader?.load { [weak self] result in
-            guard let self = self else { return }
+    private func getPopularMovies(dispatchGroup: DispatchGroup) {
+        popularRepository.load { result in
             switch result {
-            case let .success(movies):
-                self.popularMovies = movies
+            case let .success(popularMovies):
+                self.popularMovies = popularMovies
             case let .failure(error):
-                print(error)
+                print("Displar error: \(error)")
+                self.popularMovies = nil
             }
-            dispatchGroup.leave()
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RemoteMovieLoader: MovieLoader {
+struct RemoteMovieLoader: MovieLoader {
     private let url: URL
     private let client: HttpClient
     
@@ -16,16 +16,13 @@ final class RemoteMovieLoader: MovieLoader {
         case invalidData
     }
     
-    public typealias Result = LoadMovieResult
-    
     public init(url: URL, client: HttpClient) {
         self.url = url
         self.client = client
     }
     
-    func load(completion: @escaping (Result) -> Void) {
-        client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
+    func load(completion: @escaping (LoadMovieResult) -> Void) {
+        client.get(from: url) {  result in
             switch result {
             case let .success((data, response)):
                 completion(RemoteMovieLoader.map(data, from: response))
@@ -35,7 +32,7 @@ final class RemoteMovieLoader: MovieLoader {
         }
     }
     
-    private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
+    private static func map(_ data: Data, from response: HTTPURLResponse) -> LoadMovieResult {
         do {
             let items = try MoviesMapper.map(data, from: response)
             return .success(items)
